@@ -1,0 +1,22 @@
+body {
+    background-color: grey;
+    color: black;
+}
+
+.UIContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.gridContainer {
+    display: flex;
+    justify-content: center;
+    background-color: #FEFEFE;
+    width: 500px;
+    height: 500px;
+    margin-top: 145px;
+}
+
+.gridSizeValue {
+    color: black;
+}
