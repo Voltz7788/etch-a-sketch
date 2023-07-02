@@ -1,3 +1,5 @@
+let gridColor = "#333333";
+
 function createColorPicker() {
     const pickr = Pickr.create({
         el: '.color-picker',
@@ -40,9 +42,14 @@ function createColorPicker() {
             }
         }
     });
+
+    pickr.on("change", color => {
+        gridColor = (color.toHEXA().toString());
+        console.log(gridColor);
+    });
 };
 
-function clear(gridSize) {
+function clear() {
     const clearButton = document.querySelector("#clearButton");
     const slider = document.querySelector(".gridSizeSlider");
     clearButton.addEventListener("click", () => {
@@ -88,11 +95,11 @@ function generateGrid(gridSize) {
         box.style.backgroundColor = "white";
         box.style.width = `${divWidth}px`;
         box.addEventListener("click", () => {
-            box.style.backgroundColor = "#333333"
+            box.style.backgroundColor = `${gridColor}`
         });
         box.addEventListener("mouseenter", () => {
             if (drawToggle) {
-                box.style.backgroundColor = "#333333";
+                box.style.backgroundColor = `${gridColor}`;
             };
         });
 
@@ -116,6 +123,9 @@ function getGridSize() {
     // Initialise clear button
     clear();
 };
+
+
+
 
 getGridSize()
 
