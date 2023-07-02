@@ -10,23 +10,24 @@
 </head>
 <body>
     <h1 class="mainHeader">Etch-a-Sketch</h1>
-        <div class="UIContainer">
-            <div class="userSelections">
-                <div class="color-picker"></div>
-                <button class="UIButton">Color mode</button>
-                <button class="UIButton">Rainbow mode</button>
-                <button class="UIButton">Eraser</button>
-                <button class="UIButton" id="clearButton">Clear</button>
-                
-                <div class="gridSizeContainer">
-                    <div class="gridSizeValue">16 x 16</div>
-                    <input class="gridSizeSlider" type="range" min="1" max="64" value="16">
+            <div class="UIContainer">
+                <div class="userSelections">
+                    <div class="color-picker"></div>
+                    <button class="UIButton">Color mode</button>
+                    <button class="UIButton">Rainbow mode</button>
+                    <button class="UIButton">Eraser</button>
+                    <button class="UIButton" id="clearButton">Clear</button>
+                    
+                    <div class="gridSizeContainer">
+                        <div class="gridSizeValue">16 x 16</div>
+                        <input class="gridSizeSlider" type="range" min="1" max="64" value="16">
+                    </div>
                 </div>
+
+                <div class="gridContainer"></div>
+                <div class="divSpacer"></div>
             </div>
 
-            <div class="gridContainer"></div>
-            <div class="divSpacer"></div>
-        </div>
 
         <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
     

@@ -67,11 +67,16 @@ function generateGrid(gridSize) {
 
     // Add draw toggle to grid container
     let gridContainer = document.querySelector(".gridContainer");
-    gridContainer.addEventListener("mousedown", () => {
+    gridContainer.addEventListener("mousedown", (event) => {
+        event.preventDefault();
         drawToggle = !drawToggle;
     });
-    gridContainer.addEventListener("mouseup", () => {
+    gridContainer.addEventListener("mouseup", (event) => {
+        event.preventDefault();
         drawToggle = !drawToggle;
+    });
+    gridContainer.addEventListener("mouseleave", () => {
+        drawToggle = false;
     })
 
     // Create divs for grid
@@ -83,7 +88,7 @@ function generateGrid(gridSize) {
         box.style.backgroundColor = "white";
         box.style.width = `${divWidth}px`;
         box.addEventListener("click", () => {
-            box.style.backgroundColor = "#333333";
+            box.style.backgroundColor = "#333333"
         });
         box.addEventListener("mouseenter", () => {
             if (drawToggle) {
