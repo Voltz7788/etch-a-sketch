@@ -45,7 +45,14 @@ function createColorPicker() {
 function addColor(box) {
 };
 
-
+function clear(gridSize) {
+    const clearButton = document.querySelector("#clearButton");
+    const slider = document.querySelector(".gridSizeSlider");
+    clearButton.addEventListener("click", () => {
+        refreshGrid();
+        generateGrid(slider.value);
+    });
+}
 
 function refreshGrid() {
     const gridContainer = document.querySelector(".gridContainer");
@@ -56,20 +63,20 @@ function refreshGrid() {
 
 function generateGrid(gridSize) {
     // Grid width calculations
-    totalDivs = gridSize**2;
-    divWidth = 500/gridSize;
+    
+    let totalDivs = gridSize**2;
+    let divWidth = 500/gridSize;
 
     // Create divs for grid
     for (let singleDiv = totalDivs; singleDiv > 0; singleDiv--) {
         const gridContainer = document.querySelector(".gridContainer");
         const box = document.createElement("div");
         box.classList.add("box");
+        box.style.backgroundColor = "white";
         box.style.width = `${divWidth}px`;
         box.addEventListener("mouseenter", (event) => {
             box.style.backgroundColor = "#333333";
         });
-
-
 
         gridContainer.appendChild(box);
     };
@@ -87,6 +94,8 @@ function getGridSize() {
         value.textContent = `${slider.value} x ${slider.value}`;
         generateGrid(slider.value);
     };
+
+    clear();
 };
 
 getGridSize()
