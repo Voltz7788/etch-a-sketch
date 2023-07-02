@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./game.js" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/nano.min.css"/>
     <link rel="stylesheet" href="./style.css">
     <title>Etch-a-Sketch</title>
 </head>
@@ -11,18 +12,23 @@
     <h1 class="mainHeader">Etch-a-Sketch</h1>
         <div class="UIContainer">
             <div class="userSelections">
+                <div class="color-picker"></div>
+                <button class="UIButton">Color mode</button>
+                <button class="UIButton">Rainbow mode</button>
+                <button class="UIButton">Eraser</button>
+                <button class="UIButton">Clear</button>
                 
-                <button class="colorButton">Color mode</button>
-                <button class="rainbowButton">Rainbow mode</button>
-                <button class="eraserButton">Eraser</button>
-                <button class="clearButton">Clear</button>
-                
-                <input class="gridSizeSlider" type="range" min="1" max="64" value="16">
-                <div class="gridSizeValue">16</div>
+                <div class="gridSizeContainer">
+                    <div class="gridSizeValue">16 x 16</div>
+                    <input class="gridSizeSlider" type="range" min="1" max="64" value="16">
+                </div>
             </div>
 
             <div class="gridContainer"></div>
+            <div class="divSpacer"></div>
         </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
     
 </body>
 </html>

@@ -3,15 +3,64 @@
     src: url(./fonts/Inter-VariableFont_slnt\,wght.ttf);
 }
 
+/* CSS Reset for slider*/
+input[type="range"] {
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    width: 226px;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    background-color: #FEFEFE;
+    border: 1px solid #333333;
+    height: 10px;
+    border-radius: 10px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    background-color: #333333;
+    height: 20px;
+    width: 20px;
+    margin-top: -5px;
+    border-radius: 50px;
+}
+
 body {
     background-color: #EFEFEF;
-    color: black;
+    color: #333333;
 }
 
 .UIContainer {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
+    margin-top: 45px;
+}
+
+.UIButton {
+    width: 226px;
+    height: 47px;
+    background-color: #EFEFEF;
+    color: #333333;
+
+    border: 1px solid #333333;
+    border-radius: 5px;
+
+    font-size: 20px;
+}
+
+.divSpacer {
+    width: 226px;
+}
+
+.userSelections {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    gap: 29px;
+    margin-right: -280px;
 }
 
 .gridContainer {
@@ -21,13 +70,21 @@ body {
     background-color: #FEFEFE;
     width: 500px;
     height: 500px;
-    margin-top: 145px;
-    border: 2px solid black;
+    margin-top: 0px;
+    margin-right: -280px;
+    /* border: 2px solid #333333; */
+    box-shadow: 1px 1px 10px 3px #33333340;
 }
 
 .gridSizeValue {
-    color: black;
+    color: #333333;
+    font-family: Inter;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
+
 
 .box {
     margin: 0;
