@@ -42,9 +42,6 @@ function createColorPicker() {
     });
 };
 
-function addColor(box) {
-};
-
 function clear(gridSize) {
     const clearButton = document.querySelector("#clearButton");
     const slider = document.querySelector(".gridSizeSlider");
@@ -66,16 +63,32 @@ function generateGrid(gridSize) {
     
     let totalDivs = gridSize**2;
     let divWidth = 500/gridSize;
+    let drawToggle = false;
+
+    // Add draw toggle to grid container
+    let gridContainer = document.querySelector(".gridContainer");
+    gridContainer.addEventListener("mousedown", () => {
+        drawToggle = !drawToggle;
+    });
+    gridContainer.addEventListener("mouseup", () => {
+        drawToggle = !drawToggle;
+    })
 
     // Create divs for grid
     for (let singleDiv = totalDivs; singleDiv > 0; singleDiv--) {
         const gridContainer = document.querySelector(".gridContainer");
         const box = document.createElement("div");
         box.classList.add("box");
+        box.draggable = false;
         box.style.backgroundColor = "white";
         box.style.width = `${divWidth}px`;
-        box.addEventListener("mouseenter", (event) => {
+        box.addEventListener("click", () => {
             box.style.backgroundColor = "#333333";
+        });
+        box.addEventListener("mouseenter", () => {
+            if (drawToggle) {
+                box.style.backgroundColor = "#333333";
+            };
         });
 
         gridContainer.appendChild(box);
@@ -95,6 +108,7 @@ function getGridSize() {
         generateGrid(slider.value);
     };
 
+    // Initialise clear button
     clear();
 };
 
@@ -102,7 +116,3 @@ getGridSize()
 
 // maybe use switch case statements to toggle between
 // colour mode, rainbow mode and eraser mode?
-
-// for clear button, try call refreshGrid() followed by generateGrid()
-// to generate a new grid instead of changing the div colour?
-// if that doesn't work, change the div colour
