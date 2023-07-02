@@ -34,3 +34,10 @@ function getGridSize() {
 };
 
 getGridSize()
+
+// maybe use switch case statements to toggle between
+// colour mode, rainbow mode and eraser mode?
+
+// for clear button, try call refreshGrid() followed by generateGrid()
+// to generate a new grid instead of changing the div colour?
+// if that doesn't work, change the div colour
