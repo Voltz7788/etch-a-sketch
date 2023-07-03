@@ -1,4 +1,5 @@
 let gridColor = "#333333";
+let drawMode = "color";
 
 function createColorPicker() {
     const pickr = Pickr.create({
@@ -44,12 +45,56 @@ function createColorPicker() {
     });
 
     pickr.on("change", color => {
-        gridColor = (color.toHEXA().toString());
-        console.log(gridColor);
+        if (drawMode == "color") {
+            gridColor = (color.toHEXA().toString());
+        };
     });
 };
 
-function clear() {
+function generateRainbow() {
+    let colorCode = (Math.random() * 0xfffff * 1000000).toString(16);
+    console.log(`#${colorCode.slice(0,6)}`);
+    gridColor =`#${colorCode.slice(0,6)}`;
+}
+
+
+function activateRainbowMode() {
+    const allGridDivs = document.querySelectorAll(".box");
+    for (box of allGridDivs) {
+        box.addEventListener("mouseenter", generateRainbow);
+    }
+};
+
+function deactivateRainbowMode() {
+    const allGridDivs = document.querySelectorAll(".box");
+    for (box of allGridDivs) {
+        box.removeEventListener("mouseenter", generateRainbow);
+    };
+}
+
+function setUpModeButtons() {
+    const colorButton = document.querySelector("#colorButton");
+    const rainbowButton = document.querySelector("#rainbowButton");
+    const eraserButton = document.querySelector("#eraserButton");
+    colorButton.addEventListener("click", () => {
+        // drawMode = "color";
+        gridColor = "#333333"
+        deactivateRainbowMode();
+        createColorPicker();
+    });
+    rainbowButton.addEventListener("click", () => {
+        // drawMode = "rainbow";
+        activateRainbowMode();
+    });
+    eraserButton.addEventListener("click", () => {
+        deactivateRainbowMode()
+        gridColor = "white"
+        // drawMode = "eraser";
+    })
+};
+
+
+function setUpClearButton() {
     const clearButton = document.querySelector("#clearButton");
     const slider = document.querySelector(".gridSizeSlider");
     clearButton.addEventListener("click", () => {
@@ -119,15 +164,18 @@ function getGridSize() {
         value.textContent = `${slider.value} x ${slider.value}`;
         generateGrid(slider.value);
     };
-
-    // Initialise clear button
-    clear();
 };
 
+function startApp() {
+    getGridSize();
 
+    // Initialise buttons
+    setUpClearButton();
+    setUpModeButtons();
+};
 
+startApp()
 
-getGridSize()
 
 // maybe use switch case statements to toggle between
 // colour mode, rainbow mode and eraser mode?
