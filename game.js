@@ -1,5 +1,4 @@
 let gridColor = "#333333";
-let drawMode = "color";
 
 function createColorPicker() {
     const pickr = Pickr.create({
@@ -45,9 +44,9 @@ function createColorPicker() {
     });
 
     pickr.on("change", color => {
-        if (drawMode == "color") {
-            gridColor = (color.toHEXA().toString());
-        };
+        deactivateRainbowMode();
+        changeButtonColor("color");
+        gridColor = (color.toHEXA().toString());
     });
 };
 
@@ -72,25 +71,60 @@ function deactivateRainbowMode() {
     };
 }
 
+function changeButtonColor(mode) {
+    const colorButton = document.querySelector("#colorButton");
+    const rainbowButton = document.querySelector("#rainbowButton");
+    const eraserButton = document.querySelector("#eraserButton");
+    switch (mode) {
+        case "color":
+            colorButton.style.backgroundColor = "#333333";
+            colorButton.style.color = "#EFEFEF";
+            rainbowButton.style.backgroundColor = "#EFEFEF";
+            rainbowButton.style.color = "#333333";
+            eraserButton.style.backgroundColor = "#EFEFEF";
+            eraserButton.style.color = "#333333";
+            break;
+        case "rainbow":
+            rainbowButton.style.backgroundColor = "#333333";
+            rainbowButton.style.color = "#EFEFEF";
+            eraserButton.style.backgroundColor = "#EFEFEF";
+            eraserButton.style.color = "#333333";
+            colorButton.style.backgroundColor = "#EFEFEF";
+            colorButton.style.color = "#333333";
+            break;
+        case "eraser":
+            eraserButton.style.backgroundColor = "#333333";
+            eraserButton.style.color = "#EFEFEF";
+            colorButton.style.backgroundColor = "#EFEFEF";
+            colorButton.style.color = "#333333";
+            rainbowButton.style.backgroundColor = "#EFEFEF";
+            rainbowButton.style.color = "#333333";
+            break;
+    }
+};
+
 function setUpModeButtons() {
     const colorButton = document.querySelector("#colorButton");
     const rainbowButton = document.querySelector("#rainbowButton");
     const eraserButton = document.querySelector("#eraserButton");
+
+    colorButton.style.backgroundColor = "#333333";
+    colorButton.style.color = "#EFEFEF";
+
     colorButton.addEventListener("click", () => {
-        // drawMode = "color";
-        gridColor = "#333333"
+        gridColor = "#333333";
         deactivateRainbowMode();
-        createColorPicker();
+        changeButtonColor("color");
     });
     rainbowButton.addEventListener("click", () => {
-        // drawMode = "rainbow";
         activateRainbowMode();
+        changeButtonColor("rainbow");
     });
     eraserButton.addEventListener("click", () => {
-        deactivateRainbowMode()
-        gridColor = "white"
-        // drawMode = "eraser";
-    })
+        gridColor = "white";
+        deactivateRainbowMode();
+        changeButtonColor("eraser");
+    });
 };
 
 
